@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx shadcn@latest init:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm ls:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)",
+      "Bash(gh repo view:*)",
+      "Bash(where:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
