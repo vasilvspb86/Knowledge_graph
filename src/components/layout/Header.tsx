@@ -22,7 +22,7 @@ export function Header({ onOpenSettings, onOpenSessions, onExport }: HeaderProps
     <header className="flex items-center justify-between border-b border-border px-4 py-2 bg-white">
       <div className="flex items-center gap-3">
         <h1 className="text-lg font-semibold text-foreground tracking-tight">
-          SpecKit
+          Knowledge Graph
         </h1>
         {title && (
           <span className="text-sm text-muted-foreground">
