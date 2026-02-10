@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+const DEFAULT_API_KEY = import.meta.env.VITE_OPENAI_API_KEY ?? '';
+
 interface SettingsState {
   openaiApiKey: string;
   model: 'gpt-4o' | 'gpt-4o-mini';
@@ -15,7 +17,7 @@ interface SettingsState {
 export const useSettingsStore = create<SettingsState>()(
   persist(
     (set, get) => ({
-      openaiApiKey: '',
+      openaiApiKey: DEFAULT_API_KEY,
       model: 'gpt-4o-mini',
       maxSuggestions: 5,
 
@@ -26,6 +28,14 @@ export const useSettingsStore = create<SettingsState>()(
     }),
     {
       name: 'speckit-settings',
+      version: 1,
+      migrate: (persisted: unknown) => {
+        const state = persisted as Record<string, unknown>;
+        if (!state.openaiApiKey) {
+          state.openaiApiKey = DEFAULT_API_KEY;
+        }
+        return state as unknown as SettingsState;
+      },
     }
   )
 );
